@@ -1,0 +1,6 @@
+{
+  "formatter": {
+    "enabled": true,
+    "onSave": true
+  }
+}
