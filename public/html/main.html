@@ -13,6 +13,11 @@
         rel="stylesheet">
 
     <style>
+        :root {
+            --top-hover-border-radius: 2px;
+            --profile-picture-main-roundedness: 50%;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -45,7 +50,6 @@
 
             font-size: 24px;
             z-index: 999;
-
         }
 
         .hover-element {
@@ -58,6 +62,8 @@
             background-color: #4994ff;
 
             transition: 0.7s all;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0.1s;
 
             pointer-events: none;
 
@@ -65,11 +71,44 @@
         }
 
         #top-element {
-            border-radius: 5px 5px 0 0;
+            border-radius: var(--top-hover-border-radius) var(--top-hover-border-radius) 0 0;
         }
 
         #bottom-element {
-            border-radius: 0 0 5px 5px;
+            border-radius: 0 0 var(--top-hover-border-radius) var(--top-hover-border-radius);
+        }
+
+        #introduction-segment {
+            position: fixed;
+
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 800px;
+            height: 350px;
+
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .gradient-border {
+            background: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+            padding: 5px;
+            border-radius: var(--profile-picture-main-roundedness);
+            display: inline-block;
+        }
+
+        #profile-picture-main {
+            border-radius: inherit;
+            display: block;
+        }
+
+        #allahisgod {
+            font-size: 80px;
+            margin-left: 50px;
         }
     </style>
 </head>
@@ -87,10 +126,18 @@
             <div id="holder-option">NANI</div>
         </div>
     </div>
+
+    <div id="introduction-segment">
+        <div class="gradient-border">
+            <img src="https://cdn.discordapp.com/avatars/1232487556478668861/320c694707a0d7a0118ba4bcc0a4f7e4.png?size=4096"
+                id="profile-picture-main" alt="Mashallah" />
+        </div>
+
+        <p id="allahisgod">Assalamualaikum Brothers 🕋</p>
+    </div>
 </body>
 
 <script>
-    console.log()
     const topBarItems = [...document.querySelectorAll("#holder-option")];
     for (const item of topBarItems) {
         const bounds = item.getBoundingClientRect()
